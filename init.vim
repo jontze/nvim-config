@@ -27,6 +27,10 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Rust Tools
     Plug 'simrat39/rust-tools.nvim'
 
+    " File Explorer Plugin
+    Plug 'kyazdani42/nvim-web-devicons' "Optional, for file icons
+    Plug 'kyazdani42/nvim-tree.lua'
+
 call plug#end()
 
 
