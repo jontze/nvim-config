@@ -114,6 +114,6 @@ require("lsp")
 require("treesitter")
 require("statusbar")
 require("completion")
-require("lspconfig").rust_analyzer.setup({})
-require("rust-tools").setup({})
+require("rust")
+require("filetree")
 EOF
