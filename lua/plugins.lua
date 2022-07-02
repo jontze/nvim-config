@@ -60,7 +60,6 @@ return require("packer").startup(function(use)
   -- Rust Tools
   use "simrat39/rust-tools.nvim"
   -- File Explorer Plugin
-  use "kyazdani42/nvim-web-devicons" -- Optional, for file icons
   use "kyazdani42/nvim-tree.lua"
 
   -- Automatically set up your configuration after cloning packer.nvim
