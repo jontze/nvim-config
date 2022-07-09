@@ -11,10 +11,18 @@ local options = {
     smartindent = true,
     shiftwidth=4,
     hlsearch = true,
-    virtualedit=all,
+    virtualedit="all",
     backspace="indent,eol,start", -- allow backspacing over everything in insert mode
-    autoindent,
+    autoindent=true,
     mouse="a",  -- mouse support
+    clipboard="unnamedplus", -- support for system clipboard
+    fileencoding="utf-8", -- set file encoding
+    splitbelow=true, -- always split below
+    splitright=true, -- always split right
+    updatetime=300, -- faster completion (4000ms default)
+    cursorline=true, -- highlight the current line
+    timeoutlen=1000, -- time to wait for a mapped sequence to complete (ms)
+    undofile=true, -- enable persitent undo
 }
 
 for k, v in pairs(options) do
