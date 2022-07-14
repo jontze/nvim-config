@@ -66,6 +66,8 @@ return require("packer").startup(function(use)
     "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
   }
+  -- Git Diff View in Nvim
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
