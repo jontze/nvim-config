@@ -68,3 +68,9 @@ vim.g.NERDCreateDefaultMappings = 0
 vim.g.NERDSpaceDelims = 1
 map("x", "<Leader>ci", "<cmd>call NERDComment('n', 'toggle')<CR>", {})
 map("n", "<Leader>ci", "<cmd>call NERDComment('n', 'toggle')<CR>", {})
+
+-- Git Diff
+map("n", "<Leader>gitd", ":DiffviewOpen<CR>", {})
+map("n", "<Leader>gitdc", ":DiffviewClose<CR>", {})
+
+
