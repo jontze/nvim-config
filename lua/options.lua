@@ -21,10 +21,15 @@ local options = {
     splitright=true, -- always split right
     updatetime=300, -- faster completion (4000ms default)
     cursorline=true, -- highlight the current line
-    timeoutlen=1000, -- time to wait for a mapped sequence to complete (ms)
+    timeoutlen=750, -- time to wait for a mapped sequence to complete (ms)
     undofile=true, -- enable persitent undo
 }
 
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
+
+-- Disable virtual_text since it's redundant due to lsp_lines plugin
+vim.diagnostic.config({
+    virtual_text = false
+})
