@@ -68,6 +68,13 @@ return require("packer").startup(function(use)
   }
   -- Git Diff View in Nvim
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  -- Enable Multiline error messages, registered after lspconfig
+  use({
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+        require("lsp_lines").setup()
+    end,
+    })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
