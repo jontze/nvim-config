@@ -32,7 +32,10 @@ return require("packer").startup(function(use)
   -- Plugins here
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
-  use "nvim-telescope/telescope.nvim"
+  use {
+      "nvim-telescope/telescope.nvim",
+      branch = "0.1.x"
+  }
   use "neovim/nvim-lspconfig"
   use {
     "williamboman/nvim-lsp-installer",
