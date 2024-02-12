@@ -1,5 +1,8 @@
 require("plugins")
-require("lsp")
+require("mason-config") -- This needs to be before the lsp configuration
+require("formatter-config")
+require("lint-config")
+-- require("lsp")
 require("treesitter")
 require("statusbar")
 require("completion")

@@ -36,11 +36,17 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope.nvim",
       branch = "0.1.x"
   }
-  use "neovim/nvim-lspconfig"
+
+  -- Start LSP, Formatter and Linter
   use {
-    "williamboman/nvim-lsp-installer",
-    branch = "main" 
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    "mhartington/formatter.nvim",
+    "mfussenegger/nvim-lint"
   }
+  -- End LSP, Formatter, Linter
+
   use "hrsh7th/nvim-compe"
   use {
     "nvim-treesitter/nvim-treesitter",

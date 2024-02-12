@@ -31,3 +31,10 @@ git clone https://github.com/jontze/nvim-config/ ~/.config/nvim
 5. Open Nvim and all plugins should be loaded and installed, run `:checkhealth` to check
 6. Add/customize your keybindings in `~/.config/nvim/lua/keybindings.lua`.
 7. Install LSPs for the languages you care about via eg `:LspInstall python`. You can use tab completion after typing `:LspInstall ` to see which language servers are available.
+
+## Common Problems
+
+1. In case of issues with `treesitter` run:
+   ```sh
+   sudo apt install c++
+   ```
