@@ -9,7 +9,7 @@ require("mason").setup({
 })
 
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "yamlls", "dockerls", "jsonls", "angularls", "html", "tailwindcss", "tsserver" },
+    ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "yamlls", "dockerls", "jsonls", "angularls", "html", "tailwindcss", "tsserver", "terraformls" },
 }
 
 require("lspconfig").lua_ls.setup({})
@@ -21,4 +21,4 @@ require("lspconfig").angularls.setup({})
 require("lspconfig").html.setup({})
 require("lspconfig").tailwindcss.setup({})
 require("lspconfig").tsserver.setup({})
-
+require("lspconfig").terraformls.setup({})
