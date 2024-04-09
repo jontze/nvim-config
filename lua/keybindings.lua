@@ -39,9 +39,9 @@ map("n", "<C-p>", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true})
 map("n", "<C-n>", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true})
 map("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", { silent = true})
 map("n", "gn", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true})
-map("n", "ga", "<cmd>Lspsaga code_action<CR>", { silent = true})
-map("x", "ga", "<cmd>Lspsaga range_code_action<CR>", { silent = true})
-map("n", "gs", "<cmd>Lspsaga signature_help<CR>", { silent = true})
+map("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true})
+map("x", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true})
+map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true})
 
 -- Telescope
 map("n", "<Leader>pp", "<cmd>lua require'telescope.builtin'.builtin{}<CR>", {})
