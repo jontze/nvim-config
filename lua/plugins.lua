@@ -58,8 +58,6 @@ return require("packer").startup(function(use)
   }
   use "kyazdani42/nvim-web-devicons"  -- needed for galaxyline icons
   use "NLKNguyen/papercolor-theme"
-  use "nikvdp/neomux"
-  use "tpope/vim-ragtag"
   use "tpope/vim-surround"
   use "tpope/vim-unimpaired"
   use "tpope/vim-eunuch"
@@ -72,7 +70,10 @@ return require("packer").startup(function(use)
   -- Auto close for {, ), ", ' ...
   use {
     "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
+    event = "InsertEnter",
+    config = function()
+        require("nvim-autopairs").setup {}
+    end
   }
   -- Git Diff View in Nvim
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }

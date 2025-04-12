@@ -43,6 +43,10 @@ map("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true})
 map("x", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true})
 map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true})
 
+-- Inline Hints
+map("i", "ih", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", {silent = true})
+map("n", "ih", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", {silent = true})
+
 -- Telescope
 map("n", "<Leader>pp", "<cmd>lua require'telescope.builtin'.builtin{}<CR>", {})
 -- most recently used files

@@ -31,5 +31,6 @@ end
 
 -- Disable virtual_text since it's redundant due to lsp_lines plugin
 vim.diagnostic.config({
-    virtual_text = false
+    virtual_text = false,
+    virtual_lines = true,
 })
