@@ -31,7 +31,6 @@ packer.init {
 return require("packer").startup(function(use)
   -- Plugins here
   use "nvim-lua/plenary.nvim"
-  use "nvim-lua/popup.nvim"
   use {
       "nvim-telescope/telescope.nvim",
       branch = "0.1.x"
@@ -39,9 +38,9 @@ return require("packer").startup(function(use)
 
   -- Start LSP, Formatter and Linter
   use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
+    { "williamboman/mason.nvim", tag = "v1.11.0" },
+    { "williamboman/mason-lspconfig.nvim", tag = "v1.32.0" },
+    { "neovim/nvim-lspconfig", tag = "v2.0.0" },
     "mhartington/formatter.nvim",
     "mfussenegger/nvim-lint"
   }
@@ -67,9 +66,9 @@ return require("packer").startup(function(use)
   use "tpope/vim-fugitive"
   use "tomtom/tcomment_vim"
   -- Rust Tools
-  use "simrat39/rust-tools.nvim"
+  use { "mrcjkb/rustaceanvim", tag = "v6.0.2" }
   -- File Explorer Plugin
-  use "kyazdani42/nvim-tree.lua"
+  use { "nvim-tree/nvim-tree.lua", tag = "v1" }
   -- Auto close for {, ), ", ' ...
   use {
     "windwp/nvim-autopairs",
