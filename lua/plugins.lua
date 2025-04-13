@@ -48,7 +48,6 @@ require("lazy").setup({
   "nvim-treesitter/nvim-treesitter-textobjects",
   "NTBBloodbath/galaxyline.nvim", -- Maintained galaxyline
   "kyazdani42/nvim-web-devicons",  -- needed for galaxyline icons
-  "NLKNguyen/papercolor-theme",
   "tpope/vim-surround",
   "tpope/vim-unimpaired",
   "tpope/vim-eunuch",
@@ -74,4 +73,5 @@ require("lazy").setup({
     end,
   },
   "neomake/neomake",
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 })
