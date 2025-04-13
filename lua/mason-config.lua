@@ -26,3 +26,19 @@ require("lspconfig").ansiblels.setup{}
 require("lspconfig").marksman.setup{}
 require("lspconfig").cssls.setup{}
 
+require("crates").setup {
+    lsp = {
+        enabled = true,
+        on_attach = function()
+            local crates = require("crates")
+            local opts = { silent = true }
+            vim.keymap.set("n", "<leader>crv", crates.show_versions_popup, opts)
+            vim.keymap.set("n", "<leader>crf", crates.show_features_popup, opts)
+            vim.keymap.set("n", "<leader>crd", crates.show_dependencies_popup, opts)
+        end,
+        actions = true,
+        completion = true,
+        hover = true,
+    },
+}
+

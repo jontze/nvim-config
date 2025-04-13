@@ -74,4 +74,11 @@ require("lazy").setup({
   },
   "neomake/neomake",
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    'saecki/crates.nvim',
+    event = { "BufRead Cargo.toml" },
+    config = function()
+        require('crates').setup()
+    end,
+  },
 })
