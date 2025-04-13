@@ -29,11 +29,18 @@ require("lazy").setup({
   -- Start LSP, Formatter and Linter
   { "williamboman/mason.nvim", version = "v1.11.0" },
   { "williamboman/mason-lspconfig.nvim", version = "v1.32.0" },
-  { "neovim/nvim-lspconfig", version = "v2.0.0" },
+  { "neovim/nvim-lspconfig", version = "v2.*" },
   "mhartington/formatter.nvim",
   "mfussenegger/nvim-lint",  
   -- End LSP, Formatter, Linter
-  "hrsh7th/nvim-compe",
+  -- Completions
+  {
+    "Saghen/blink.cmp",
+    dependencies = { 'rafamadriz/friendly-snippets' }, -- Optional: provides snippets for the snippet source
+    version = "1.*",
+    opts = {},
+    keymap = { preset = "default" },
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
