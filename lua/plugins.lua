@@ -1,95 +1,70 @@
--- Auto install of packer
-local fn = vim.fn
-local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Reloads NeoVim on each save of `plugins.lua`
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+-- Leader Key Needs to be defined before lazy plugin manager setup
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-}
-
-return require("packer").startup(function(use)
-  -- Plugins here
-  use "nvim-lua/plenary.nvim"
-  use {
+-- Setup lazy nvim
+require("lazy").setup({
+  "nvim-lua/plenary.nvim",
+  {
       "nvim-telescope/telescope.nvim",
-      branch = "0.1.x"
-  }
-
+      version = "0.1.8"
+  },
   -- Start LSP, Formatter and Linter
-  use {
-    { "williamboman/mason.nvim", tag = "v1.11.0" },
-    { "williamboman/mason-lspconfig.nvim", tag = "v1.32.0" },
-    { "neovim/nvim-lspconfig", tag = "v2.0.0" },
-    "mhartington/formatter.nvim",
-    "mfussenegger/nvim-lint"
-  }
+  { "williamboman/mason.nvim", version = "v1.11.0" },
+  { "williamboman/mason-lspconfig.nvim", version = "v1.32.0" },
+  { "neovim/nvim-lspconfig", version = "v2.0.0" },
+  "mhartington/formatter.nvim",
+  "mfussenegger/nvim-lint",  
   -- End LSP, Formatter, Linter
-
-  use "hrsh7th/nvim-compe"
-  use {
+  "hrsh7th/nvim-compe",
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-  use "nvim-treesitter/nvim-treesitter-textobjects"
-  use {
-    "NTBBloodbath/galaxyline.nvim", -- Maintained galaxyline
-    branch = "main"
-  }
-  use "kyazdani42/nvim-web-devicons"  -- needed for galaxyline icons
-  use "NLKNguyen/papercolor-theme"
-  use "tpope/vim-surround"
-  use "tpope/vim-unimpaired"
-  use "tpope/vim-eunuch"
-  use "tpope/vim-fugitive"
-  use "tomtom/tcomment_vim"
+    build = ":TSUpdate",
+  },
+  "nvim-treesitter/nvim-treesitter-textobjects",
+  "NTBBloodbath/galaxyline.nvim", -- Maintained galaxyline
+  "kyazdani42/nvim-web-devicons",  -- needed for galaxyline icons
+  "NLKNguyen/papercolor-theme",
+  "tpope/vim-surround",
+  "tpope/vim-unimpaired",
+  "tpope/vim-eunuch",
+  "tpope/vim-fugitive",
+  "tomtom/tcomment_vim",
   -- Rust Tools
-  use { "mrcjkb/rustaceanvim", tag = "v6.0.2" }
+  { "mrcjkb/rustaceanvim", version = "v6.0.2" },
   -- File Explorer Plugin
-  use { "nvim-tree/nvim-tree.lua", tag = "v1" }
+  { "nvim-tree/nvim-tree.lua", version = "v1" },
   -- Auto close for {, ), ", ' ...
-  use {
+  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    config = function()
-        require("nvim-autopairs").setup {}
-    end
-  }
+    config = true
+  },
   -- Git Diff View in Nvim
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
   -- Enable Multiline error messages, registered after lspconfig
-  use({
+  {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
         require("lsp_lines").setup()
     end,
-    })
-
-  use "neomake/neomake"
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require("packer").sync()
-  end
-end)
+  },
+  "neomake/neomake",
+})
