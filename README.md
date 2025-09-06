@@ -12,6 +12,21 @@
 - Package Manager for Plugins
 - And more
 
+## System Dependencies
+
+Install the following dependencies on your system:
+
+```bash
+sudo apt install build-essential libreadline-dev unzip lua5.4 luarocks
+```
+
+## Other Dependencies
+
+- ripgrep
+- fd-find
+- rust
+- `rustup component add rust-analyzer`
+
 ## Installation
 
 1. Install neovim version >0.10
